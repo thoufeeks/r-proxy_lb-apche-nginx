@@ -1,0 +1,13 @@
+upstream backend {
+        server <VM2_Private_IP>;
+        server <VM3_Private_IP>;
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
