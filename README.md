@@ -40,8 +40,24 @@ sudo apt install nginx -y
 
 Edit the default Nginx config or create a new one:
 
-sudo nano /etc/nginx/sites-available/default
+sudo nano /etc/nginx/sites-available/
 
+Under the above dir please create a new file and paste the content of nginx-block file : eg: sudo nano /etc/nginx/sites-available/reverse-lb.conf
+
+Enable the site
+(Create a symbolic link to sites-enabled:)
+
+sudo ln -s /etc/nginx/sites-available/reverse-lb.conf /etc/nginx/sites-enabled/
+
+sudo nginx -t
+sudo systemctl reload nginx
+
+Optionally: Disable the default site
+(To avoid conflicts with the default config:)
+
+sudo rm /etc/nginx/sites-enabled/default
+sudo systemctl reload nginx
+----------------------------------
 
 
 
